@@ -22,6 +22,7 @@ app.use(cookieParser()); //for parsing cookies
 // it will check the 'static' folder for matching files 
 app.use('/assets', express.static('static'));
 
+//test comment
 
 var cookie;
 
