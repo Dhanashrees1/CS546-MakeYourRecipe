@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../partials/head %>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h2>Header section</h2>
+        </header>
+        <main>
+            <!-- Let's start writing content! -->  
+            <section class ="titleSection">
+                 <h1 class "h1"><%=resultData.name%></h1>  
+                 <p><%=resultData.description%></p>
+                 <p>--------------------------------------------------------------------------------------------------------------------------------------</p>
+            </section>
+            <section class="bodySection">
+                <div class="row">
+                    <div class="col-xs-12 col-md-5">
+                        <img src="http://localhost:3000/assets/images/<%=resultData.image_url%>" alt="Salmon-burger" width="450px" height="250px"/>
+                    </div>
+                    <div class="col-xs-6 col-md-4">
+                        <p>Prep Time:<%=resultData.prep_time%> min<br>
+                        Cook Time:<%=resultData.cook_time%> min<br>
+                        Number of Servings:<%=resultData.servings%><br>
+                        Cuisine : <%=resultData.cuisine%></p>
+                    </div>
+                </div>
+                <div class ="row">
+                   <div id="popup1" class="overlay">
+                    <div class="popup">
+                        <div class="popup_head">
+                        <h3 ><%=resultData.name%></h3>
+                        <a class="close" href="#">&times;</a></div>
+                        <div class="content">
+                            
+                                 <% resultData.ingredients.forEach(function(r){ %>
+                                 <div class ="inRow">
+                                <label> <%= r.name %></label>
+                                </div>
+                                <% }); %> 
+                            
+                        </div>
+                    </div>
+                </div>
+                    <div class ="col-xs-12 col-md-2">
+                         <h3>Ingredients</h3>
+                            <% resultData.ingredients.forEach(function(r){ %>
+                                <label>
+                                <%=r.min_q%> <%= r.name %></label>
+                                <% }); %> 
+                                <br>
+                                   <a class="button fa fa-shopping-cart" href="#popup1"> Buy Ingredients</a>
+<!-- 
+                            <button type="button" class="btn btn-primary" onclick="pop('popup1')">Buy Ingredients</button> -->
+                    </div>
+                    <div class="col-xs-6 col-md-4">
+                        <h3>Procedure</h3>
+                        <p><%=resultData.procedure%></p>
+                    </div>
+                </div>
+            </section>      
+        </main>
+    </div>
+
+    <% include ../partials/scripts %>
+</body>
+
+</html>
